@@ -123,6 +123,15 @@ function DesktopNavigation(props: { className?: string }) {
         <NavItem href="/">Inicio</NavItem>
         <NavItem href="/projects">Proyectos</NavItem>
         <NavItem href="/blog">Blog</NavItem>
+        <Link
+          href="https://links.mahg.me/"
+          className={clsx(
+            "relative block px-3 py-2 transition",
+            "hover:text-sky-900 dark:hover:text-sky-500"
+          )}
+        >
+          SocialBar
+        </Link>
         <NavItem href="mailto:contacto@mahg.me">Contacto</NavItem>
         <Link
           href="https://drive.google.com/file/d/1one18GvA2nFNswvsvob42rg76-j-8Rpl/view?usp=sharing"
@@ -200,7 +209,12 @@ function MobileNavigation(props: { className?: string }) {
                 <MobileNavItem href="/">Inicio</MobileNavItem>
                 <MobileNavItem href="/projects">Proyectos</MobileNavItem>
                 <MobileNavItem href="/blog">Blog</MobileNavItem>
-                <MobileNavItem href="#">Contacto</MobileNavItem>
+                <Link href="https://links.mahg.me/" className="block py-2">
+                  SocialBar
+                </Link>
+                <MobileNavItem href="mailto:contacto@mahg.me">
+                  Contacto
+                </MobileNavItem>
                 <Link
                   href="https://drive.google.com/file/d/1one18GvA2nFNswvsvob42rg76-j-8Rpl/view?usp=sharing"
                   target="_blank"

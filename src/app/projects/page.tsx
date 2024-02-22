@@ -113,9 +113,9 @@ export default async function Home() {
               <li className="group relative flex flex-col items-start">
                 <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
                   <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-700/50 sm:-inset-x-6 sm:rounded-2xl"></div>
-                  <Link target="_blank" href="#">
+                  <Link target="_blank" href="https://links.mahg.me/">
                     <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
-                    <span className="relative z-10">Social Media Bar</span>
+                    <span className="relative z-10">Social Bar</span>
                   </Link>
                 </h2>
                 <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
@@ -133,7 +133,7 @@ export default async function Home() {
                       fill="currentColor"
                     ></path>
                   </svg>
-                  <span className="ml-2">#</span>
+                  <span className="ml-2">links.mahg.me</span>
                 </p>
               </li>
               <li className="group relative flex flex-col items-start">
