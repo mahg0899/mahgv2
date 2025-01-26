@@ -1,5 +1,6 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { Analytics } from "@vercel/analytics/react";
 
 // div className whit the background color is for the content on the page.
 
@@ -12,6 +13,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </div>
       <div className="relative flex w-full flex-col">
+        <Analytics />
         <Header />
         <main className="flex-auto">{children}</main>
         <Footer />
