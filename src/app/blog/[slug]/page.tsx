@@ -1,7 +1,9 @@
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { useMDXComponent } from "@/hooks/use-mdx";
 
 import { format, parseISO } from "date-fns";
-import { allPosts } from "contentlayer/generated";
+import { type Post } from "@/types/contentlayer";
+import allPostsData from "../../../../.contentlayer/generated/Post/_index.json";
+const allPosts = allPostsData as Post[];
 
 import Link from "next/link";
 
@@ -9,11 +11,16 @@ export const generateStaticParams = async () => {
   return allPosts.map((post) => ({ slug: post.slug }));
 };
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+export const generateMetadata = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
   const post = allPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
-    throw new Error("Post not found");
+    throw new Error(`Post not found: "${params.slug}" | AllPosts: ${allPosts.length}`);
+  }
+
+  if (!post.body || !post.body.code) {
+    throw new Error(`Invalid post body for "${params.slug}". Keys: ${post.body ? Object.keys(post.body).join(',') : 'undefined'}`);
   }
 
   return {
@@ -34,14 +41,19 @@ const ArrowLeftIcon = (props: { className?: string }) => {
   );
 };
 
-export default function Home({ params }: { params: { slug: string } }) {
+export default async function Home(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const post = allPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
-    throw new Error("Post not found");
+    throw new Error(`Post not found: "${params.slug}" | AllPosts: ${allPosts.length}`);
   }
 
-  const MDXContent = useMDXComponent(post.body.code);
+  if (!post.body || !post.body.code) {
+    throw new Error(`Invalid post body for "${params.slug}". Keys: ${post.body ? Object.keys(post.body).join(',') : 'undefined'}`);
+  }
+
+  // const MDXContent = useMDXComponent(post.body.code);
 
   return (
     <div className="sm:px-8 mt-16 sm:mt-32">
@@ -72,7 +84,11 @@ export default function Home({ params }: { params: { slug: string } }) {
               </header>
 
               <div className="mt-8 prose dark:prose-invert">
-                <MDXContent />
+                {/* <MDXContent /> */}
+                <p className="p-4 border border-yellow-500 bg-yellow-50 text-yellow-800 rounded">
+                  Content rendering temporarily disabled due to incompatibility between Contentlayer (archived) and React 19.
+                  Please upgrade to next-mdx-remote or similar modern solution.
+                </p>
               </div>
             </article>
           </div>

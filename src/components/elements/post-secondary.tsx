@@ -1,4 +1,4 @@
-import { type Post } from "contentlayer/generated";
+import { type Post } from "@/types/contentlayer";
 import { parseISO, format } from "date-fns";
 
 import Link from "next/link";

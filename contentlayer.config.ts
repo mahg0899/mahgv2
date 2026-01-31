@@ -42,7 +42,7 @@ const source = makeSource({
       return options;
     },
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, options]],
+    // rehypePlugins: [[rehypePrettyCode, options]], // Disabled due to incompatibility with updated stack
   },
 });
 

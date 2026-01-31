@@ -1,5 +1,7 @@
 import { PostSecondary } from "@/components/elements/post-secondary";
-import { allPosts } from "contentlayer/generated";
+import { type Post } from "@/types/contentlayer";
+import allPostsData from "../../../.contentlayer/generated/Post/_index.json";
+const allPosts = allPostsData as Post[];
 
 export const metadata = {
   title: "Blog - MAHG",
