@@ -1,4 +1,4 @@
-import { useMDXComponent } from "@/hooks/use-mdx";
+import { MDXContent } from "@/components/mdx-content";
 
 import { format, parseISO } from "date-fns";
 import { type Post } from "@/types/contentlayer";
@@ -53,7 +53,7 @@ export default async function Home(props: { params: Promise<{ slug: string }> })
     throw new Error(`Invalid post body for "${params.slug}". Keys: ${post.body ? Object.keys(post.body).join(',') : 'undefined'}`);
   }
 
-  // const MDXContent = useMDXComponent(post.body.code);
+
 
   return (
     <div className="sm:px-8 mt-16 sm:mt-32">
@@ -84,11 +84,7 @@ export default async function Home(props: { params: Promise<{ slug: string }> })
               </header>
 
               <div className="mt-8 prose dark:prose-invert">
-                {/* <MDXContent /> */}
-                <p className="p-4 border border-yellow-500 bg-yellow-50 text-yellow-800 rounded">
-                  Content rendering temporarily disabled due to incompatibility between Contentlayer (archived) and React 19.
-                  Please upgrade to next-mdx-remote or similar modern solution.
-                </p>
+                <MDXContent code={post.body.code} />
               </div>
             </article>
           </div>
